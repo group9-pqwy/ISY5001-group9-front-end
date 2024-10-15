@@ -1,0 +1,206 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*main page*/
+/* 让整个页面居中显示 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  /* 高度为视口的高度 */
+  margin: 0;
+  background-color: #f8f9fa; /* 背景颜色 */
+  font-family: Arial, sans-serif;
+}
+
+
+/* 表单容器的样式 */
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 设置两列布局 */
+  gap: 20px; /* 设置列与列之间的间距 */
+  max-width: 1000px; /* 限制表单的最大宽度 */
+  margin: 0 auto; /* 让表单居中 */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* 确保内边距不会影响宽度 */
+}
+
+button {
+  grid-column: span 2; /* 让按钮占据两列 */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-self: center; /* 让按钮居中 */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 标题样式 */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* 错误信息样式 */
+p {
+  text-align: center;
+  color: red;
+}
+
+
+
+
+
+/* 页面主容器 */
+.recommended-cars-page {
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px; /* 三部分之间的间距 */
+}
+
+/* 左侧搜索表单 */
+.search-form-container {
+  position: fixed; /* 固定位置 */
+  top: 0;
+  left: 0;
+  width: 300px; /* 搜索表单宽度 */
+  height: 100vh; /* 占满整个屏幕高度 */
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* 内容多时添加滚动条 */
+  border-right: 1px solid #ddd; /* 添加右边框以区分内容 */
+}
+
+
+/* 中间汽车列表 */
+.car-list-container {
+  flex: 1; /* 中间部分自适应宽度 */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.car-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px); /* 列表最大高度，避免溢出 */
+}
+
+/* 汽车列表项样式 */
+.car-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 垂直居中内容 */
+  position: relative; /* 伪元素定位需要 */
+  transition: background-color 0.3s ease;
+  padding-left: 30px; /* 为左侧的圆点留出空间 */
+}
+
+/* 在列表项前添加圆点符号 */
+.car-list li::before {
+  content: '•'; /* 圆点符号 */
+  font-size: 20px; /* 圆点大小 */
+  color: blue; /* 圆点颜色 */
+  position: absolute;
+  left: 10px; /* 将圆点放在列表项的左边 */
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+}
+
+.car-list li:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* 右侧汽车详细信息 */
+.car-details-container {
+  width: 350px; /* 右侧固定宽度 */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease; /* 平滑展开 */
+  display: none; /* 初始隐藏 */
+}
+
+.car-details-container.expanded {
+  display: block;
+}
+
+.car-details-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+
+
