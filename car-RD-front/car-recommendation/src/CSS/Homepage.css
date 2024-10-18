@@ -1,0 +1,94 @@
+/* 主容器 - 页面整体布局 */
+.homepage-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 3fr 1fr; /* 页面布局为 3/4 和 1/4 两部分 */
+  }
+  
+  /* 顶部3/4部分 */
+  .top-section {
+    position: relative;
+    background: url('../9b51.jpeg') no-repeat center center/cover; /* 背景图片始终覆盖顶部 3/4 区域 */
+    display: flex;
+    justify-content: flex-start; /* 搜索框靠左 */
+    align-items: center; /* 搜索框在垂直方向居中 */
+    padding-left: 50px; /* 左侧内边距 */
+    height: 100%;
+     /* 确保图片宽度拉伸 */
+  }
+  
+  /* 搜索框部分 */
+  .search-section {
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 450px; /* 搜索框的固定宽度 */
+    z-index: 1; /* 确保搜索框在图片上方 */
+  }
+  
+  /* 搜索表单样式 */
+  .search-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .input-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .input-row input {
+    width: 48%; /* 两列布局 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .form-links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .form-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 底部 1/4 部分 */
+  .bottom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  

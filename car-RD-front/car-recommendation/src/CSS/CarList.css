@@ -1,0 +1,130 @@
+.car-list-container {
+    margin: 20px;
+  }
+  
+  .car-list li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* 将主要的项目与详细信息分布在两侧 */
+    align-items: flex-start; /* 使项目与详情在同一水平线上 */
+  }
+  
+  .car-list li:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .car-list li .dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(74, 38, 251);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .car-details-container {
+    display: flex;
+    flex-direction: column; /* 垂直排列详细信息 */
+    align-items: flex-start;   /* 靠左对齐详细信息 */
+    margin-left: 20px;
+    padding-top: 10px; /* 让详细信息和主信息稍微分开 */
+  }
+  
+  .car-details {
+    text-align: left; /* 确保详细信息靠左对齐 */
+    font-size: 14px;
+  }
+  
+  .car-details p {
+    margin: 2px 0;
+  }
+  
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 让容器占据整个页面高度 */
+    width: 75%; /* 让容器宽度占据页面的 3/4 */
+    margin-left: auto; /* 将容器推向右边 */
+  }
+
+  
+  .loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .spinner {
+    border: 20px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4a26fb;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loading-spinner p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 让容器占据整个页面高度 */
+    width: 75%; /* 让容器宽度占据页面的 3/4 */
+    margin-left: auto; /* 将容器推向右边 */
+  }
+  
+
+
+  
+
+  
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #4a26fb;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0s;
+  }
+  
+  @keyframes bounce {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+  
+  
