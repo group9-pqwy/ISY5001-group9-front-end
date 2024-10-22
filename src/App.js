@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./pages/Home";
+import SearchPage from "./pages/SearchPage";
+import {AuthProvider} from "./utils/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AuthProvider>
+      <Router>
+        <Routes>
+          {/* 主页面路径 */}
+          <Route path="/" element={<Home />} />
+          {/* 推荐页面路径 */}
+          <Route path="/searchPage" element={<SearchPage />} />
+        </Routes>
+      </Router>
+      </AuthProvider>
   );
 }
 
