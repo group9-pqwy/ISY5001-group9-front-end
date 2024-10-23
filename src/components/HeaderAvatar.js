@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
+import { Avatar, Dropdown, Menu } from 'antd';
+import type { MenuProps } from 'antd';
+import {AuthContext} from "../utils/AuthContext";
 
-const HeaderAvatar: React.FC = () => (
-    <Space direction="vertical" size={16}>
-        <Space wrap size={16}>
-            <Avatar size={64} icon={<UserOutlined />} />
-            <Avatar size="large" icon={<UserOutlined />} />
-            <Avatar icon={<UserOutlined />} />
-            <Avatar size="small" icon={<UserOutlined />} />
-            <Avatar size={14} icon={<UserOutlined />} />
-        </Space>
-    </Space>
-);
+const HeaderAvatar: React.FC = () => {
+    const { logout } = useContext(AuthContext);
+
+    const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+        if (key === 'logout') {
+            logout();
+        }
+    };
+
+    const items: MenuProps['items'] = [
+        {
+            key: 'logout',
+            label: 'Logout',
+        },
+    ];
+
+    return (
+        <Dropdown menu={{ items, onClick: handleMenuClick }} trigger={['click']}>
+            <Avatar size={48} icon={<UserOutlined />} style={{ cursor: 'pointer' }} />
+        </Dropdown>
+    );
+};
 
 export default HeaderAvatar;

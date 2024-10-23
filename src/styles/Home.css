@@ -1,6 +1,7 @@
 .logo img {
     padding: 10px;
     height: 80px;
+    margin-top: 10px;
 }
 
 . img {
@@ -8,7 +9,7 @@
     height: 80px;
 }
 
-.header-container {
+.homepage-header-container {
     display: flex;
     align-items: center;
     justify-content: space-between; /* 使Logo在左侧，登录表单在右侧 */
@@ -26,21 +27,24 @@
     justify-content: flex-start; /* 搜索框靠左 */
     align-items: center; /* 搜索框在垂直方向居中 */
     padding-left: 50px; /* 左侧内边距 */
-    height: 100%;
-    /* 确保图片宽度拉伸 */
+    height: 75vh; /* 占据浏览器窗口的3/4高度 */
+    border-radius: 20px; /* 圆角边框 */
+    overflow: hidden; /* 确保圆角效果生效，图片不会溢出 */
 }
+
 /* 搜索框部分 */
 .search-section {
     background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* 搜索框圆角 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 阴影效果 */
     width: 450px; /* 搜索框的固定宽度 */
     z-index: 1; /* 确保搜索框在图片上方 */
 }
 
+
 /* 搜索表单样式 */
-.search-form {
+.homepage-search-form {
     display: flex;
     flex-direction: column;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RDPageSearchForm from '../components/RDPageSearchForm';
 import CarList from '../components/CarList';
 import axios from 'axios';
-import '../styles/RecommendedCarsPage.css';
+import '../styles/RecommendedCarsModule.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const RecommendedCarsModule = () => {
@@ -40,7 +40,12 @@ const RecommendedCarsModule = () => {
           const delay = new Promise(resolve => setTimeout(resolve, 500));
 
           try {
-            const response = await axios.post('http://localhost:8080/api/recommend', initialState);
+              const headers = {};
+              const token = localStorage.getItem('token');  // 获取本地存储中的 token
+              if (token) {
+                  headers.Authorization = `Bearer ${token}`;  // 如果 token 存在，添加 Authorization 头部
+              }
+            const response = await axios.post('http://localhost:8080/search/recommend', initialState,{headers});
     
             // 打印收到的响应数据，帮助调试
             console.log("Received response from Flask: ", response.data);

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import {AntDesignOutlined, LockOutlined, UserOutlined} from '@ant-design/icons';
-import {Button, ConfigProvider, Form, Input, Space} from 'antd';
-import {createStyles} from "antd-style";
+import React, { useEffect, useState, useContext } from 'react';
+import { AntDesignOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, ConfigProvider, Form, Input, Space, message } from 'antd';
+import { createStyles } from 'antd-style';
+import { AuthContext } from '../utils/AuthContext'; // 导入 AuthContext
 
 const useStyle = createStyles(({ prefixCls, css }) => ({
-    linearGradientButton: css`
+    headLinearGradientButton: css`
     &.${prefixCls}-btn-primary:not([disabled]):not(.${prefixCls}-btn-dangerous) {
       border-width: 0;
 
@@ -28,20 +29,34 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
     }
   `,
 }));
+
 const HeadLoginForm = () => {
     const [form] = Form.useForm();
     const [clientReady, setClientReady] = useState(false);
     const { styles } = useStyle();
 
-    // To disable submit button at the beginning.
+    // 从 AuthContext 中获取 login, loading, error
+    const { login, loading, error } = useContext(AuthContext);
+
+    // 当组件挂载后，设置 clientReady 为 true
     useEffect(() => {
         setClientReady(true);
     }, []);
+
+    // 提交表单时调用 AuthContext 中的 login 方法
     const onFinish = (values) => {
-        console.log('Finish:', values);
+        login(values.username, values.password);
     };
+
+    // 当 error 发生变化时，显示错误信息
+    useEffect(() => {
+        if (error) {
+            message.error(error);
+        }
+    }, [error]);
+
     return (
-        <Form form={form} name="horizontal_login" layout="inline" onFinish={onFinish}>
+        <Form form={form}  layout="inline" onFinish={onFinish}>
             <Form.Item
                 name="username"
                 rules={[
@@ -68,18 +83,14 @@ const HeadLoginForm = () => {
                 {() => (
                     <ConfigProvider
                         button={{
-                            className: styles.linearGradientButton,
+                            className: styles.headLinearGradientButton,
                         }}
                     >
                         <Space>
                             <Button
                                 type="primary"
                                 htmlType="submit"
-                                disabled={
-                                    !clientReady ||
-                                    !form.isFieldsTouched(true) ||
-                                    !!form.getFieldsError().filter(({ errors }) => errors.length).length
-                                }
+                                loading={loading} // 显示加载状态
                             >
                                 Log in
                             </Button>
@@ -90,4 +101,5 @@ const HeadLoginForm = () => {
         </Form>
     );
 };
+
 export default HeadLoginForm;

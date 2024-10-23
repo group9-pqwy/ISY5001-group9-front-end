@@ -4,7 +4,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import headerLogo from '../assets/carquestlogo.png';
 import {css} from "antd-style";
 import HeaderLoginForm from "../components/HeaderLoginForm";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import HomepageSearchForm from "../components/HomepageSearchForm";
 import RecommendedCarsModule from "../components/RecommendedCarsModule";
 import {AuthContext} from "../utils/AuthContext";
@@ -22,10 +22,12 @@ function SearchPage() {
     const { isLoggedIn } = useContext(AuthContext);
     return (
         <Layout>
-            <Header className="header-container"
+            <Header className="homepage-header-container"
             >
                 <div className="logo" >
-                    <img  src={headerLogo} alt="Carquest Logo" />
+                    <Link to="/">
+                        <img src={headerLogo} alt="Carquest Logo" />
+                    </Link>
                 </div>
                 {!isLoggedIn ? (
                     <HeaderLoginForm />

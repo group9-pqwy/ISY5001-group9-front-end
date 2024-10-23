@@ -4,10 +4,11 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import headerLogo from '../assets/carquestlogo.png';
 import {css} from "antd-style";
 import HeaderLoginForm from "../components/HeaderLoginForm";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import HomepageSearchForm from "../components/HomepageSearchForm";
 import {AuthContext} from "../utils/AuthContext";
 import HeaderAvatar from "../components/HeaderAvatar";
+import HomaPageCarRecommendationList from "../components/HomaPageCarRecommendationList";
 const { Header, Content, Footer } = Layout;
 const items = new Array(1).fill(null).map((_, index) => ({
     key: index + 1,
@@ -24,10 +25,12 @@ function Home() {
     const { isLoggedIn } = useContext(AuthContext);
     return (
         <Layout>
-            <Header className="header-container"
+            <Header className="homepage-header-container"
             >
                 <div className="logo" >
-                    <img  src={headerLogo} alt="Carquest Logo" />
+                    <Link to="/">
+                        <img src={headerLogo} alt="Carquest Logo" />
+                    </Link>
                 </div>
                 {!isLoggedIn ? (
                     <HeaderLoginForm />
@@ -51,6 +54,15 @@ function Home() {
                             </div>
                         </div>
                 </div>
+                <div style={{ textAlign: 'center' }}>
+                    <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                        You might like these cars...
+                    </p>
+                </div>
+                <div>
+                    <HomaPageCarRecommendationList/>
+                </div>
+
             </Content>
             <Footer
                 style={{

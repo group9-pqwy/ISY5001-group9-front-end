@@ -17,12 +17,12 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     // 登录函数：使用 axios 向后端发送登录请求
-    const login = async (email, password) => {
+    const login = async (username, password) => {
         setLoading(true);
         setError(null); // 清空之前的错误信息
         try {
-            const response = await axios.post('https://your-api-url.com/login', {
-                email,
+            const response = await axios.post('http://localhost:8080/user/login', {
+                username,
                 password,
             });
 
@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
             // 将 token 存储在 localStorage 中
             localStorage.setItem('token', token);
             setIsLoggedIn(true);
+            window.location.reload();
         } catch (err) {
             setError('Login failed. Please check your credentials.');
             setIsLoggedIn(false);
@@ -44,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
+        window.location.reload();
     };
 
     return (
