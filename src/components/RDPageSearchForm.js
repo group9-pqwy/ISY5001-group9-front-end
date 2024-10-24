@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../utils/AuthContext';
+import { AuthContext } from '../utils/AuthContext'; // 假设 AuthContext 存在
 import '../styles/RDPageSearchForm.css';
 
 const RDPageSearchForm = ({
@@ -59,12 +59,14 @@ const RDPageSearchForm = ({
     }*/
 
     // 校验逻辑：最小价格与最大价格，最小里程与最大里程
-    if (minPrice > maxPrice) {
+    if (Number(minPrice) > Number( maxPrice)) {
       alert('Min Price cannot be greater than Max Price. Please check your input.');
+      console.log("min:", minPrice);
+      console.log("max:", maxPrice); 
       resetInvalidFields(['price']); // 重置价格字段
       return;
     }
-    if (minOdometer > maxOdometer) {
+    if (Number(minOdometer) > Number(maxOdometer)) {
       alert('Min Odometer cannot be greater than Max Odometer. Please check your input.');
       resetInvalidFields(['odometer']); // 重置里程字段
       return;
@@ -101,43 +103,6 @@ const RDPageSearchForm = ({
       setLoading(false);  // 请求完成，停止 loading
     }
   }
-  // 最小值和最大值的实时输入校验逻辑
-  const handleMinPriceChange = (e) => {
-    const value = Number(e.target.value);
-    setMinPrice(value);
-    if (value > maxPrice) {
-      alert('Min Price cannot be greater than Max Price.');
-      resetInvalidFields(['price']); // 出现错误时重置价格字段
-    }
-  };
-
-  const handleMaxPriceChange = (e) => {
-    const value = Number(e.target.value);
-    setMaxPrice(value);
-    if (value < minPrice) {
-      alert('Max Price cannot be less than Min Price.');
-      resetInvalidFields(['price']); // 出现错误时重置价格字段
-    }
-  };
-
-  const handleMinOdometerChange = (e) => {
-    const value = Number(e.target.value);
-    setMinOdometer(value);
-    if (value > maxOdometer) {
-      alert('Min Odometer cannot be greater than Max Odometer.');
-      resetInvalidFields(['odometer']); // 出现错误时重置里程字段
-    }
-  };
-
-  const handleMaxOdometerChange = (e) => {
-    const value = Number(e.target.value);
-    setMaxOdometer(value);
-    if (value < minOdometer) {
-      alert('Max Odometer cannot be less than Min Odometer.');
-      resetInvalidFields(['odometer']); // 出现错误时重置里程字段
-    }
-  };
-
 
   return (
     <form onSubmit={handleSubmit} className="search-form">
@@ -207,7 +172,7 @@ const RDPageSearchForm = ({
         <div className="field-label" onClick={() => toggleField('color')}>
           <i className="icon-color"></i> Colour
           <span className="toggle-arrow">{expandedFields.color ? '▲' : '▼'}</span>
-
+          
           {/* 圆形提示图标 */}
           <span className="info-icon">
             ?
@@ -217,11 +182,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.color && (
-          <input
-            type="text"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-            placeholder="Enter color"
+          <input 
+            type="text" 
+            value={color} 
+            onChange={(e) => setColor(e.target.value)} 
+            placeholder="Enter color" 
             className="field-input"
           />
         )}
@@ -242,11 +207,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.interior && (
-          <input
-            type="text"
-            value={interior}
-            onChange={(e) => setInterior(e.target.value)}
-            placeholder="Enter interior color"
+          <input 
+            type="text" 
+            value={interior} 
+            onChange={(e) => setInterior(e.target.value)} 
+            placeholder="Enter interior color" 
             className="field-input"
           />
         )}
@@ -268,18 +233,18 @@ const RDPageSearchForm = ({
         </div>
         {expandedFields.price && (
           <div className="min-max-group">
-            <input
-              type="number"
-              value={minPrice}
-              onChange={handleMinPriceChange}
-              placeholder="Min Price"
+            <input 
+              type="number" 
+              value={minPrice} 
+              onChange={(e) => setMinPrice(e.target.value)} 
+              placeholder="Min Price" 
               className="field-input"
             />
-            <input
-              type="number"
-              value={maxPrice}
-              onChange={handleMaxPriceChange}
-              placeholder="Max Price"
+            <input 
+              type="number" 
+              value={maxPrice} 
+              onChange={(e) => setMaxPrice(e.target.value)} 
+              placeholder="Max Price" 
               className="field-input"
             />
           </div>
@@ -302,18 +267,18 @@ const RDPageSearchForm = ({
         </div>
         {expandedFields.odometer && (
           <div className="min-max-group">
-            <input
-              type="number"
-              value={minOdometer}
-              onChange={handleMinOdometerChange}
-              placeholder="Min Odometer"
+            <input 
+              type="number" 
+              value={minOdometer} 
+              onChange={(e) => setMinOdometer(e.target.value)} 
+              placeholder="Min Odometer" 
               className="field-input"
             />
-            <input
-              type="number"
-              value={maxOdometer}
-              onChange={handleMaxOdometerChange}
-              placeholder="Max Odometer"
+            <input 
+              type="number" 
+              value={maxOdometer} 
+              onChange={(e) => setMaxOdometer(e.target.value)} 
+              placeholder="Max Odometer" 
               className="field-input"
             />
           </div>
@@ -335,11 +300,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.transmission && (
-          <input
-            type="text"
-            value={transmission}
-            onChange={(e) => setTransmission(e.target.value)}
-            placeholder="Enter transmission type"
+          <input 
+            type="text" 
+            value={transmission} 
+            onChange={(e) => setTransmission(e.target.value)} 
+            placeholder="Enter transmission type" 
             className="field-input"
           />
         )}
@@ -360,11 +325,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.vin && (
-          <input
-            type="text"
-            value={vin}
-            onChange={(e) => setVin(e.target.value)}
-            placeholder="Enter VIN"
+          <input 
+            type="text" 
+            value={vin} 
+            onChange={(e) => setVin(e.target.value)} 
+            placeholder="Enter VIN" 
             className="field-input"
           />
         )}
@@ -385,11 +350,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.state && (
-          <input
-            type="text"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            placeholder="Enter state"
+          <input 
+            type="text" 
+            value={state} 
+            onChange={(e) => setState(e.target.value)} 
+            placeholder="Enter state" 
             className="field-input"
           />
         )}
@@ -410,11 +375,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.condition && (
-          <input
-            type="text"
-            value={condition}
-            onChange={(e) => setCondition(e.target.value)}
-            placeholder="Enter condition"
+          <input 
+            type="text" 
+            value={condition} 
+            onChange={(e) => setCondition(e.target.value)} 
+            placeholder="Enter condition" 
             className="field-input"
           />
         )}
@@ -435,11 +400,11 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.seller && (
-          <input
-            type="text"
-            value={seller}
-            onChange={(e) => setSeller(e.target.value)}
-            placeholder="Enter seller"
+          <input 
+            type="text" 
+            value={seller} 
+            onChange={(e) => setSeller(e.target.value)} 
+            placeholder="Enter seller" 
             className="field-input"
           />
         )}
@@ -460,17 +425,17 @@ const RDPageSearchForm = ({
           </span>
         </div>
         {expandedFields.mmr && (
-          <input
-            type="number"
-            value={mmr}
-            onChange={(e) => setMmr(e.target.value)}
-            placeholder="Enter MMR"
+          <input 
+            type="number" 
+            value={mmr} 
+            onChange={(e) => setMmr(e.target.value)} 
+            placeholder="Enter MMR" 
             className="field-input"
           />
         )}
       </div>
 
-      <button class="RDPage-button" type="submit" disabled={loading}>
+      <button type="submit" disabled={loading}>
         {loading ? 'Loading...' : 'Get Recommendations'}
       </button>
       {error && <p style={{ color: 'red' }}>{error}</p>}

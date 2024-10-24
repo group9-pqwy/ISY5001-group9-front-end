@@ -9,6 +9,7 @@ import HomepageSearchForm from "../components/HomepageSearchForm";
 import {AuthContext} from "../utils/AuthContext";
 import HeaderAvatar from "../components/HeaderAvatar";
 import HomaPageCarRecommendationList from "../components/HomaPageCarRecommendationList";
+import DemoChat from "../components/ChatbotComponent";
 const { Header, Content, Footer } = Layout;
 const items = new Array(1).fill(null).map((_, index) => ({
     key: index + 1,
@@ -62,7 +63,9 @@ function Home() {
                 <div>
                     <HomaPageCarRecommendationList/>
                 </div>
-
+                <div>
+                    <DemoChat/>
+                </div>
             </Content>
             <Footer
                 style={{
