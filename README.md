@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# CarQuest(Front-end)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This system is a Car Search Recommendation Platform with a front-end powered by React.
 
-## Available Scripts
+## Key Features
 
-In the project directory, you can run:
+1. **Search Functionality**
+   Users can input search criteria on the React front-end and get 10 recommended results, which will be displayed as a list on the front-end.
+2. **Home Page Recommendations**
+   Based on the user’s previous searches, the homepage dynamically suggests car options. 
+3. **Chatbot Feature**
+   The chatbot accepts both text and voice inputs, converts them to text, and generate response for user.
 
-### `npm start`
+## Installation & Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The following explains how to run this project in your local environment. If needed, you can try to change the port in the code and deploy it to the cloud by yourself.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository:
 
-### `npm test`
+   ```bash
+   git clone https://github.com/group9-pqwy/ISY5001-group9-front-end.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Front-End Setup**:
 
-### `npm run build`
+   - Navigate to the 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+     ```
+     The root directory of the carquest project
+     ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+     install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+     ```bash
+     npm install
+     ```
 
-### `npm run eject`
+   - Start the front-end server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+     ```bash
+     npm start
+     ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.Fill in the google key to get car image(recommend you do it before second step):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In `src/components/CarList.js` , enter your own google image search API key.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+``` javascript
+      const apiKey = '';
+      const cx = '';    // Custom Search Engine ID
+```
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+carquest/
+├── .idea/                     # IDE configuration files
+├── build/                     # Build directory, contains compiled files
+├── node_modules/              # Project dependencies (third-party libraries)
+├── public/                    # Static resources (not processed by webpack)
+├── src/                       # Source code directory
+│   ├── assets/                # Static assets (e.g., images, icons)
+│   ├── components/            # Reusable React components
+│   ├── pages/                 # Page components, each representing a full page
+│   ├── styles/                # Styling files, containing CSS stylesheets
+│   ├── utils/                 # Utility functions, containing general helper methods
+│   ├── App.css                # Styles for the App component
+│   ├── App.js                 # Main application component
+│   ├── App.test.js            # Test file, contains unit tests for App component
+│   ├── index.css              # Global stylesheet
+│   ├── index.js               # Entry point for the application
+│   ├── logo.svg               # Application logo file
+│   └── reportWebVitals.js     # Performance reporting file
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+We welcome contributions! Please ensure code style consistency and functionality requirements are met before submitting a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
