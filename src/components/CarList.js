@@ -19,8 +19,8 @@ const CarList = ({ cars, loading }) => {
   const fetchCarImage = async (car) => {
     try {
       // 设置 API key 和 cx (Custom Search Engine ID)
-      const apiKey = '';
-      const cx = '';  // 自定义搜索引擎 ID
+      const apiKey = ' ';
+      const cx = ' ';  // 自定义搜索引擎 ID
   
       // 调用Google Custom Search API，使用更多详细信息进行搜索
       const response = await axios.get('https://www.googleapis.com/customsearch/v1', {
