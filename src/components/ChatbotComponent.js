@@ -31,7 +31,7 @@ export default function DemoChat() {
                 // 生成AI的消息对象
                 const aiResponseMsg = {
                     _id: new Date().getTime().toString(),
-                    date: new Date().getTime(),
+                    date: Math.floor(new Date().getTime() / 1000),
                     user: {
                         id: '9527',
                         avatar: userAvatar,// 设置AI头像URL
@@ -73,7 +73,7 @@ export default function DemoChat() {
             // 将语音识别的文本作为消息发送
             const speechMsg = {
                 _id: new Date().getTime().toString(), // 生成唯一 ID
-                date: new Date().getTime(),
+                date:  new Date().toISOString(),
                 user: { id: my.id, avatar: my.avatar, nickname: my.nickname },
                 message: { type: 'text', content: speechToText }
             };

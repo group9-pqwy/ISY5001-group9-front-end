@@ -310,31 +310,6 @@ const RDPageSearchForm = ({
         )}
       </div>
 
-      {/* VIN Section */}
-      <div className={`field-group ${expandedFields.vin ? 'expanded' : ''}`}>
-        <div className="field-label" onClick={() => toggleField('vin')}>
-          <i className="icon-vin"></i> VIN
-          <span className="toggle-arrow">{expandedFields.vin ? '▲' : '▼'}</span>
-
-          {/* 圆形提示图标 */}
-          <span className="info-icon">
-            ?
-            <div className="tooltip-text">
-              Vehicle Identification Number, a unique code for each vehicle.
-            </div>
-          </span>
-        </div>
-        {expandedFields.vin && (
-          <input 
-            type="text" 
-            value={vin} 
-            onChange={(e) => setVin(e.target.value)} 
-            placeholder="Enter VIN" 
-            className="field-input"
-          />
-        )}
-      </div>
-
       {/* State Section */}
       <div className={`field-group ${expandedFields.state ? 'expanded' : ''}`}>
         <div className="field-label" onClick={() => toggleField('state')}>
@@ -380,31 +355,6 @@ const RDPageSearchForm = ({
             value={condition} 
             onChange={(e) => setCondition(e.target.value)} 
             placeholder="Enter condition" 
-            className="field-input"
-          />
-        )}
-      </div>
-
-      {/* Seller Section */}
-      <div className={`field-group ${expandedFields.seller ? 'expanded' : ''}`}>
-        <div className="field-label" onClick={() => toggleField('seller')}>
-          <i className="icon-seller"></i> Seller
-          <span className="toggle-arrow">{expandedFields.seller ? '▲' : '▼'}</span>
-
-          {/* 圆形提示图标 */}
-          <span className="info-icon">
-            ?
-            <div className="tooltip-text">
-              Identity of the seller.
-            </div>
-          </span>
-        </div>
-        {expandedFields.seller && (
-          <input 
-            type="text" 
-            value={seller} 
-            onChange={(e) => setSeller(e.target.value)} 
-            placeholder="Enter seller" 
             className="field-input"
           />
         )}
